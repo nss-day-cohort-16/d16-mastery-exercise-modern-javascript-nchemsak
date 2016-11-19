@@ -5,56 +5,52 @@ let Robot = function() {
   this.type = null;
   this.health = null;
   this.damage = null;
-  console.log("Robot: ", Robot);
+  this.property = null;
+  // console.log("Robot: ", Robot);
 };
 
 ////////////////////////////////////////////////////////////
 //                          Constructors
 /////////////////////////////////////////////////////////////
 
+// Define 3 robot functions: drone, bipedal, atv
+// Give each robot model a different range of health and Damage. For example, one model can have health range of 50-80, and another one will have a range of 60-120. To accomplish this, read about the [Math.random()]
+
 var Drone = function() {
-  this.property = "aerial";
+  this.type = "Drone";
+  this.property = "Aerial";
   let bottomHealth = 30;
   let topHealth = 50;
   let bottomDamage = 30;
   let topDamage = 40;
-  let droneHealth = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-  let droneDamage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
-  console.log("property: ", this.property);
-  console.log("droneHealth: ", droneHealth);
-  console.log("droneDamage: ", droneDamage);
+  this.health = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
+  this.damage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
 };
+Drone.prototype = new Robot();
+console.log("Drone.prototype: ", Drone.prototype);
 
 let Bipedal = function() {
-  this.property = "ground";
+  this.type = "Bipedal";
+  this.property = "Ground";
   let bottomHealth = 50;
   let topHealth = 70;
   let bottomDamage = 20;
   let topDamage = 30;
-  let bipedalHealth = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-  let bipedalDamage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
-  console.log("property: ", this.property);
-  console.log("bipedalHealth: ", bipedalHealth);
-  console.log("bipedalDamage: ", bipedalDamage);
+  this.health = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
+  this.damage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
 };
 
 let Atv = function() {
-  let property = "aerial";
+  this.type = "ATV";
+  this.property = "Ground";
   let bottomHealth = 60;
   let topHealth = 90;
   let bottomDamage = 10;
   let topDamage = 20;
-  let atvHealth = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-  let atvDamage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
-  console.log("property: ", property);
-  console.log("atvHealth: ", atvHealth);
-  console.log("atvDamage: ", atvDamage);
+  this.health = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
+  this.damage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
 };
 
-
-
-// Define 3 robot functions: drone, bipedal, atv
-// Give each robot model a different range of health and Damage. For example, one model can have health range of 50-80, and another one will have a range of 60-120. To accomplish this, read about the [Math.random()]
 
 /////////////////////////////////////////////////////////////
 //                          Robots
@@ -63,20 +59,21 @@ let Atv = function() {
 // ATV
 let j5 = function() {
   this.name = "Johnny5";
-  this.damage = "";
-  this.health = "";
+  this.damage = "AtvDamage";
+  this.health = "AtvHealth";
   this.image = "";
 };
 j5.prototype = new Atv();
+console.log("j5.prototype: ", j5.prototype);
 
 let doomba = function() {
   this.name = "Doomba";
-  this.damage = "";
-  this.health = "";
+  this.damage = "AtvDamage";
+  this.health = "AtvHealth";
   this.image = "";
 };
 doomba.prototype = new Atv();
-
+console.log("doomba.prototype: ", doomba.prototype);
 
 // Drones
 let e5 = function() {
@@ -86,6 +83,7 @@ let e5 = function() {
   this.image = "";
 };
 e5.prototype = new Drone();
+console.log("e5.prototype: ", e5.prototype);
 
 let qwerty = function() {
   this.name = "QWERTY";
@@ -94,7 +92,7 @@ let qwerty = function() {
   this.image = "";
 };
 qwerty.prototype = new Drone();
-
+console.log("qwerty.prototype: ", qwerty.prototype);
 
 // Bipedal
 let bishop = function() {
@@ -104,6 +102,7 @@ let bishop = function() {
   this.image = "";
 };
 bishop.prototype = new Bipedal();
+console.log("bishop.prototype: ", bishop.prototype);
 
 let daryl = function() {
   this.name = "D.A.R.Y.L";
@@ -112,52 +111,6 @@ let daryl = function() {
   this.image = "";
 };
 daryl.prototype = new Bipedal();
-
-
-// function drone() {
-//   let property = "aerial";
-//   let bottomHealth = 30;
-//   let topHealth = 50;
-//   let bottomDamage = 30;
-//   let topDamage = 40;
-//   let droneHealth = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-//   let droneDamage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
-//   console.log("property: ", property);
-//   console.log("droneHealth: ", droneHealth);
-//   console.log("droneDamage: ", droneDamage);
-// }
-// // drone();
-
-// function bipedal() {
-//   let property = "ground";
-//   let bottomHealth = 50;
-//   let topHealth = 70;
-//   let bottomDamage = 20;
-//   let topDamage = 30;
-//   let bipedalHealth = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-//   let bipedalDamage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
-//   console.log("property: ", property);
-//   console.log("bipedalHealth: ", bipedalHealth);
-//   console.log("bipedalDamage: ", bipedalDamage);
-
-// }
-// bipedal();
-
-// function atv() {
-//   let property = "aerial";
-//   let bottomHealth = 60;
-//   let topHealth = 90;
-//   let bottomDamage = 10;
-//   let topDamage = 20;
-//   let atvHealth = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-//   let atvDamage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
-//   console.log("property: ", property);
-//   console.log("atvHealth: ", atvHealth);
-//   console.log("atvDamage: ", atvDamage);
-// }
-// // atv();
-
-
-// Robot();
+console.log("daryl.prototype: ", daryl.prototype);
 
 module.exports = { Robot, Drone, Bipedal, Atv, j5, doomba, e5, daryl, bishop, qwerty };
