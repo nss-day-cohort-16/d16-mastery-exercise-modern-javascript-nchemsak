@@ -1,0 +1,32 @@
+.one,
+.two {
+  float: left;
+  margin-left: 20px; }
+
+.container {
+  clear: both;
+  margin-left: 0;
+  margin-right: 0; }
+
+#playerOne {
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: black;
+  float: left;
+  display: inline-block; }
+
+#playerTwo {
+  width: 200px;
+  height: 200px;
+  color: black;
+  background-color: red;
+  display: inline-block; }
+
+#attack {
+  margin-top: 10px; }
+
+.playerName {
+  color: white; }
+
+/*# sourceMappingURL=quiz.css.map */

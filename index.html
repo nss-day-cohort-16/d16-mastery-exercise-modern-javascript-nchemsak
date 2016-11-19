@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mastery Exercise: Robot Battle</title>
+  <!-- bootstrap stylesheet -->
+  <link rel="stylesheet" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- custom stylesheet -->
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+
+<body>
+  <!-- <div id="wrapper"> -->
+  <header></header>
+  <h2>Robot Battle</h2>
+  <div id="clear">
+    <form>
+      <!-- robot1 -->
+      <div class="form-group one">
+        <label for="robot1">Robot 1:</label>
+        <input type="text" class="form-control" id="robot1" placeholder="Name Robot 1">
+        <div class="form-group">
+          <label for="robotOptions1">Choose Model:</label>
+          <select class="form-control" id="robotOptions1">
+            <option value="j5" class="atv j5">ATV: Johnny 5</option>
+            <option value="doomba" class="atv doomba">ATV: Doomba</option>
+            <option value="e5" class="drone e5">Drone: Eagle 5</option>
+            <option value="qwerty" class="drone qwerty">Drone: Qwerty</option>
+            <option value="bishop" class="bipedal bishop">Bipedal: Bishop</option>
+            <option value="daryl" class="bipedal daryl">Bipedal: D.A.R.Y.L</option>
+          </select>
+        </div>
+      </div>
+      <!-- robot2 -->
+      <div class="form-group two">
+        <label for="robot2">Robot 2:</label>
+        <input type="text" class="form-control" id="robot2" placeholder="Name Robot 2">
+        <div class="form-group">
+          <label for="robotOptions2">Choose Model:</label>
+          <select class="form-control" id="robotOptions2">
+            <option value="j5" class="atv j5">ATV: Johnny 5</option>
+            <option value="doomba" class="atv doomba">ATV: Doomba</option>
+            <option value="e5" class="drone e5">Drone: Eagle 5</option>
+            <option value="qwerty" class="drone qwerty">Drone: Qwerty</option>
+            <option value="bishop" class="bipedal bishop">Bipedal: Bishop</option>
+            <option value="daryl" class="bipedal daryl">Bipedal: D.A.R.Y.L</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <div class="container">
+      <button type="button" class="btn btn-danger" id="submit">Submit Robot Names</button>
+    </div>
+  </div>
+  <!-- attack page -->
+  <div id="fightPage">
+    <div id="playerOne"></div>
+    <div id="playerTwo"></div>
+    <div class="container">
+      <button type="button" id="attack" class="btn btn-danger">ATTACK!!</button>
+    </div>
+  </div>
+  <!-- </div> -->
+  <!-- bootstrap script tags -->
+  <script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- <script src="javascripts/quiz.js"></script> -->
+  <!-- <script src="javascripts/robots.js"></script> -->
+  <script src="/dist/app.js"></script>
+</body>
+
+</html>
