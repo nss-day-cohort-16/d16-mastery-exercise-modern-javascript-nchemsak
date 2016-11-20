@@ -1,116 +1,95 @@
 'use strict';
 
-// Base Robot Function
+////////////////////////////////////////////////////////////
+//                    Base Robot Function
+/////////////////////////////////////////////////////////////
+
 let Robot = function() {
-  this.type = null;
+  this.name = null;
   this.health = null;
   this.damage = null;
   this.property = null;
-  // console.log("Robot: ", Robot);
 };
+
 
 ////////////////////////////////////////////////////////////
-//                          Constructors
+//                    Constructors
 /////////////////////////////////////////////////////////////
 
-// Define 3 robot functions: drone, bipedal, atv
-// Give each robot model a different range of health and Damage. For example, one model can have health range of 50-80, and another one will have a range of 60-120. To accomplish this, read about the [Math.random()]
+// Define 3 robot functions: drone, bipedal, atv.
+// Give each robot model a different range of health and Damage.
+// For example, one model can have health of 50-80, another one 60-120, etc.
+
 
 var Drone = function() {
-  this.type = "Drone";
+  let droneBottomHealth = 30;
+  let droneTopHealth = 50;
+  let droneBottomDamage = 30;
+  let droneTopDamage = 40;
+  this.health = Math.floor(Math.random() * (droneTopHealth - droneBottomHealth + 1)) + droneBottomHealth;
+  this.damage = Math.floor(Math.random() * (droneTopDamage - droneBottomDamage + 1)) + droneBottomDamage;
   this.property = "Aerial";
-  let bottomHealth = 30;
-  let topHealth = 50;
-  let bottomDamage = 30;
-  let topDamage = 40;
-  this.health = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-  this.damage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
 };
 Drone.prototype = new Robot();
-console.log("Drone.prototype: ", Drone.prototype);
 
-let Bipedal = function() {
-  this.type = "Bipedal";
+var BiPedal = function() {
+  let biBottomHealth = 30;
+  let biTopHealth = 50;
+  let biBottomDamage = 30;
+  let bitTopDamage = 40;
+  this.health = Math.floor(Math.random() * (biTopHealth - biBottomHealth + 1)) + biBottomHealth;
+  this.damage = Math.floor(Math.random() * (bitTopDamage - biBottomDamage + 1)) + biBottomDamage;
   this.property = "Ground";
-  let bottomHealth = 50;
-  let topHealth = 70;
-  let bottomDamage = 20;
-  let topDamage = 30;
-  this.health = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-  this.damage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
 };
+BiPedal.prototype = new Robot();
 
-let Atv = function() {
-  this.type = "ATV";
+var ATV = function() {
+  let atvBottomHealth = 30;
+  let atvTopHealth = 50;
+  let atvBottomDamage = 30;
+  let atvTopDamage = 40;
+  this.health = Math.floor(Math.random() * (atvTopHealth - atvBottomHealth + 1)) + atvBottomHealth;
+  this.damage = Math.floor(Math.random() * (atvTopDamage - atvBottomDamage + 1)) + atvBottomDamage;
   this.property = "Ground";
-  let bottomHealth = 60;
-  let topHealth = 90;
-  let bottomDamage = 10;
-  let topDamage = 20;
-  this.health = Math.floor(Math.random() * (topHealth - bottomHealth + 1)) + bottomHealth;
-  this.damage = Math.floor(Math.random() * (topDamage - bottomDamage + 1)) + bottomDamage;
 };
+ATV.prototype = new Robot();
 
 
 /////////////////////////////////////////////////////////////
 //                          Robots
 /////////////////////////////////////////////////////////////
 
-// ATV
-let j5 = function() {
-  this.name = "Johnny5";
-  this.damage = "AtvDamage";
-  this.health = "AtvHealth";
-  this.image = "";
-};
-j5.prototype = new Atv();
-console.log("j5.prototype: ", j5.prototype);
 
-let doomba = function() {
-  this.name = "Doomba";
-  this.damage = "AtvDamage";
-  this.health = "AtvHealth";
-  this.image = "";
-};
-doomba.prototype = new Atv();
-console.log("doomba.prototype: ", doomba.prototype);
+// ATV types
 
-// Drones
-let e5 = function() {
-  this.name = "Eagle 5";
-  this.damage = "";
-  this.health = "";
-  this.image = "";
-};
-e5.prototype = new Drone();
-console.log("e5.prototype: ", e5.prototype);
+let j5 = new ATV();
+j5.name = "Johnny 5";
+console.log("j5: ", j5);
 
-let qwerty = function() {
-  this.name = "QWERTY";
-  this.damage = "";
-  this.health = "";
-  this.image = "";
-};
-qwerty.prototype = new Drone();
-console.log("qwerty.prototype: ", qwerty.prototype);
+let doomba = new ATV();
+doomba.name = "Doomba";
+console.log("doomba: ", doomba);
 
-// Bipedal
-let bishop = function() {
-  this.name = "Bishop";
-  this.damage = "";
-  this.health = "";
-  this.image = "";
-};
-bishop.prototype = new Bipedal();
-console.log("bishop.prototype: ", bishop.prototype);
 
-let daryl = function() {
-  this.name = "D.A.R.Y.L";
-  this.damage = "";
-  this.health = "";
-  this.image = "";
-};
-daryl.prototype = new Bipedal();
-console.log("daryl.prototype: ", daryl.prototype);
+// Drone types
 
-module.exports = { Robot, Drone, Bipedal, Atv, j5, doomba, e5, daryl, bishop, qwerty };
+let qwerty = new Drone();
+qwerty.name = "Qwerty";
+console.log("qwerty: ", qwerty);
+
+let e5 = new Drone();
+e5.name = "Eagle 5";
+console.log("e5: ", e5);
+
+// BiPedal Types
+
+let bishop = new BiPedal();
+bishop.name = "Bishop";
+console.log("bishop: ", bishop);
+
+let daryl = new BiPedal();
+daryl.name = "D.A.R.Y.L.";
+console.log("daryl: ", daryl);
+
+
+module.exports = { Robot, Drone, BiPedal, ATV, j5, doomba, e5, daryl, bishop, qwerty };

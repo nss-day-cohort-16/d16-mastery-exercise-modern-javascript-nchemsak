@@ -3,8 +3,28 @@ let Robot = require('./robots.js');
 let robotOne = new Robot.Robot();
 let robotTwo = new Robot.Robot();
 
-console.log("robotOne: ", robotOne);
-console.log("robotTwo: ", robotTwo);
+
+/////////////////////////////////////////////////////////////
+//                      ROBOTS
+/////////////////////////////////////////////////////////////
+
+let j5 = Robot.j5.prototype;
+let qwerty = Robot.qwerty.prototype;
+let doomba = Robot.doomba.prototype;
+let e5 = Robot.e5.prototype;
+let bishop = Robot.bishop.prototype;
+let daryl = Robot.daryl.prototype;
+
+
+console.log("daryl: ", daryl);
+console.log("j5: ", j5);
+console.log("qwerty: ", qwerty);
+console.log("doomba: ", doomba);
+console.log("bishop: ", bishop);
+console.log("e5: ", e5);
+
+// console.log("robotOne: ", robotOne);
+// console.log("robotTwo: ", robotTwo);
 
 $('#fightPage').hide();
 
@@ -18,17 +38,21 @@ $("#submit").click(function() {
   robotTwo.name = $('#robot2').val();
   robotOne.type = $('#robotOptions1').find(":selected").val();
   robotTwo.type = $('#robotOptions2').find(":selected").val();
+  robotOne.health = $(5);
+  robotTwo.health = $(5);
+  console.log("robotOne.health: ", robotOne.health);
+
   $("#playerOne").append(`<h2>${robotOne.name}</h2>
                           <h4>Type: ${robotOne.type}</h4>
-                          <h5>Health: ${robotOne.health}</h5>
-                          <h5>Attack Damage: ${robotOne.damage}</h5>`);
+                          <h5 class="healthOne">Health: ${robotOne.health[0]}</h5>
+                          <h5 class="damageOne">Attack Damage: ${robotOne.damage}</h5>`);
   $("#playerTwo").append(`<h2>${robotTwo.name}</h2>
                           <h4>Type: ${robotTwo.type}</h4>
-                          <h5>Health: ${robotTwo.health}</h5>
-                          <h5>Attack Damage: ${robotTwo.damage}</h5>`);
+                          <h5 class="healthTwo">Health: ${robotTwo.health}</h5>
+                          <h5 class="damageTwo">Attack Damage: ${robotTwo.damage}</h5>`);
   if (robotOne.type === 'Johnny 5') {
     console.log("j5");
-    // robotOne.prototype = new Robot.j5();
+    console.log("robotOne: ", robotOne);
   }
   if (robotOne.type === 'Doomba') {
     console.log("doomba");
@@ -59,9 +83,28 @@ $("#submit").click(function() {
 });
 
 $('#attack').click(function() {
-  console.log("you clicked attack");
   console.log("robotOne: ", robotOne);
   console.log("robotTwo: ", robotTwo);
+  console.log("robotOne.health: ", robotOne.health);
+  console.log("robotTwo.health: ", robotTwo.health);
+
+
+
+  $("");
+
+  if (robotOne.health > 0) {
+    robotTwo.health = (robotTwo.health) - (robotOne.prototype.damage);
+    $(".healthTwo").html(robotTwo.health);
+    if (robotTwo.health < 0) {
+      console.log("robotTwo lost");
+    }
+  } else {
+    console.log("robotOne lost");
+  }
+
+
+
+
 });
 
 
