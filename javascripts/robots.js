@@ -64,32 +64,34 @@ ATV.prototype = new Robot();
 
 let j5 = new ATV();
 j5.name = "Johnny 5";
-console.log("j5: ", j5);
+// console.log("j5: ", j5);
 
 let doomba = new ATV();
 doomba.name = "Doomba";
-console.log("doomba: ", doomba);
+// console.log("doomba: ", doomba);
 
 
 // Drone types
 
 let qwerty = new Drone();
 qwerty.name = "Qwerty";
-console.log("qwerty: ", qwerty);
+// console.log("qwerty: ", qwerty);
 
 let e5 = new Drone();
 e5.name = "Eagle 5";
-console.log("e5: ", e5);
+// console.log("e5: ", e5);
 
 // BiPedal Types
 
 let bishop = new BiPedal();
 bishop.name = "Bishop";
-console.log("bishop: ", bishop);
+// console.log("bishop: ", bishop);
 
 let daryl = new BiPedal();
 daryl.name = "D.A.R.Y.L.";
-console.log("daryl: ", daryl);
+// console.log("daryl: ", daryl);
 
 
 module.exports = { Robot, Drone, BiPedal, ATV, j5, doomba, e5, daryl, bishop, qwerty };
+// module.exports = { Robot };
+
