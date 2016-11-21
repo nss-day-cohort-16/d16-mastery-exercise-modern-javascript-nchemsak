@@ -22,10 +22,10 @@ let Robot = function() {
 
 
 var Drone = function() {
-  let droneBottomHealth = 30;
-  let droneTopHealth = 50;
-  let droneBottomDamage = 30;
-  let droneTopDamage = 40;
+  let droneBottomHealth = 80;
+  let droneTopHealth = 90;
+  let droneBottomDamage = 10;
+  let droneTopDamage = 15;
   this.health = Math.floor(Math.random() * (droneTopHealth - droneBottomHealth + 1)) + droneBottomHealth;
   this.damage = Math.floor(Math.random() * (droneTopDamage - droneBottomDamage + 1)) + droneBottomDamage;
   this.property = "Aerial";
@@ -33,10 +33,10 @@ var Drone = function() {
 Drone.prototype = new Robot();
 
 var BiPedal = function() {
-  let biBottomHealth = 30;
-  let biTopHealth = 50;
-  let biBottomDamage = 30;
-  let bitTopDamage = 40;
+  let biBottomHealth = 70;
+  let biTopHealth = 80;
+  let biBottomDamage = 5;
+  let bitTopDamage = 10;
   this.health = Math.floor(Math.random() * (biTopHealth - biBottomHealth + 1)) + biBottomHealth;
   this.damage = Math.floor(Math.random() * (bitTopDamage - biBottomDamage + 1)) + biBottomDamage;
   this.property = "Ground";
@@ -44,10 +44,10 @@ var BiPedal = function() {
 BiPedal.prototype = new Robot();
 
 var ATV = function() {
-  let atvBottomHealth = 30;
-  let atvTopHealth = 50;
-  let atvBottomDamage = 30;
-  let atvTopDamage = 40;
+  let atvBottomHealth = 50;
+  let atvTopHealth = 70;
+  let atvBottomDamage = 15;
+  let atvTopDamage = 20;
   this.health = Math.floor(Math.random() * (atvTopHealth - atvBottomHealth + 1)) + atvBottomHealth;
   this.damage = Math.floor(Math.random() * (atvTopDamage - atvBottomDamage + 1)) + atvBottomDamage;
   this.property = "Ground";

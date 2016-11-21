@@ -1,9 +1,8 @@
 'use strict';
 let Robot = require('./robots.js');
+let round = 0;
 let robotOne = new Robot.Robot();
 let robotTwo = new Robot.Robot();
-// console.log("Robot: ", Robot);
-// console.log("robotOne: ", robotOne);
 
 /////////////////////////////////////////////////////////////
 //                      ROBOTS
@@ -84,29 +83,33 @@ function append() {
                           <h4>Attack Damage: ${robotOne.damage}</h4>`);
   $("#playerTwo").append(`<h4>Health: ${robotTwo.health}</h2>
                           <h4>Attack Damage: ${robotTwo.damage}</h4>`);
+  // ATTACK BUTTON CLICK
+  $('#attack').click(() => {
+    attack();
+  });
 }
 
 /////////////////////////////////////////////////////////////
-//                      FIGHT CLICK
+//                    ATTACK FUNCTION
 /////////////////////////////////////////////////////////////
+function attack() {
+  round++;
 
-$('#attack').click(function() {
-  console.log("robotOne: ", robotOne);
-  console.log("robotTwo: ", robotTwo);
+  robotOne.health = (robotOne.health) - (robotTwo.damage);
+  robotTwo.health = (robotTwo.health) - (robotOne.damage);
 
+  console.log("robotOne.health: ", robotOne.health);
+  console.log("robotTwo.health: ", robotTwo.health);
 
-
-  if (robotOne.health > 0) {
-    robotTwo.health = (robotTwo.health) - (robotOne.prototype.damage);
-    $(".healthTwo").html(robotTwo.health);
-    if (robotTwo.health < 0) {
-      console.log("robotTwo lost");
-    }
-  } else {
-    console.log("robotOne lost");
+  if (robotOne.health <= 0 && robotTwo.health > 0) {
+    console.log("RobotTwo Won!!");
+  } else if (robotTwo.health <= 0 && robotOne.health > 0) {
+    console.log("RobotOne Won!!");
+  } else if (robotOne.health && robotTwo.health > 0) {
+    console.log("keep fighting!");
+  } else if (robotOne.health && robotTwo.health < 0) {
+    console.log("Both Robots dead as shit");
   }
 
-
-
-
-});
+  console.log("round: ", round);
+}

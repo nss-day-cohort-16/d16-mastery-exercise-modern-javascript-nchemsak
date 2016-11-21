@@ -1,10 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 let Robot = require('./robots.js');
+let round = 0;
 let robotOne = new Robot.Robot();
 let robotTwo = new Robot.Robot();
-// console.log("Robot: ", Robot);
-// console.log("robotOne: ", robotOne);
 
 /////////////////////////////////////////////////////////////
 //                      ROBOTS
@@ -85,32 +84,36 @@ function append() {
                           <h4>Attack Damage: ${robotOne.damage}</h4>`);
   $("#playerTwo").append(`<h4>Health: ${robotTwo.health}</h2>
                           <h4>Attack Damage: ${robotTwo.damage}</h4>`);
+  // ATTACK BUTTON CLICK
+  $('#attack').click(() => {
+    attack();
+  });
 }
 
 /////////////////////////////////////////////////////////////
-//                      FIGHT CLICK
+//                    ATTACK FUNCTION
 /////////////////////////////////////////////////////////////
+function attack() {
+  round++;
 
-$('#attack').click(function() {
-  console.log("robotOne: ", robotOne);
-  console.log("robotTwo: ", robotTwo);
+  robotOne.health = (robotOne.health) - (robotTwo.damage);
+  robotTwo.health = (robotTwo.health) - (robotOne.damage);
 
+  console.log("robotOne.health: ", robotOne.health);
+  console.log("robotTwo.health: ", robotTwo.health);
 
-
-  if (robotOne.health > 0) {
-    robotTwo.health = (robotTwo.health) - (robotOne.prototype.damage);
-    $(".healthTwo").html(robotTwo.health);
-    if (robotTwo.health < 0) {
-      console.log("robotTwo lost");
-    }
-  } else {
-    console.log("robotOne lost");
+  if (robotOne.health <= 0 && robotTwo.health > 0) {
+    console.log("RobotTwo Won!!");
+  } else if (robotTwo.health <= 0 && robotOne.health > 0) {
+    console.log("RobotOne Won!!");
+  } else if (robotOne.health && robotTwo.health > 0) {
+    console.log("keep fighting!");
+  } else if (robotOne.health && robotTwo.health < 0) {
+    console.log("Both Robots dead as shit");
   }
 
-
-
-
-});
+  console.log("round: ", round);
+}
 
 },{"./robots.js":2}],2:[function(require,module,exports){
 'use strict';
@@ -137,10 +140,10 @@ let Robot = function() {
 
 
 var Drone = function() {
-  let droneBottomHealth = 30;
-  let droneTopHealth = 50;
-  let droneBottomDamage = 30;
-  let droneTopDamage = 40;
+  let droneBottomHealth = 80;
+  let droneTopHealth = 90;
+  let droneBottomDamage = 10;
+  let droneTopDamage = 15;
   this.health = Math.floor(Math.random() * (droneTopHealth - droneBottomHealth + 1)) + droneBottomHealth;
   this.damage = Math.floor(Math.random() * (droneTopDamage - droneBottomDamage + 1)) + droneBottomDamage;
   this.property = "Aerial";
@@ -148,10 +151,10 @@ var Drone = function() {
 Drone.prototype = new Robot();
 
 var BiPedal = function() {
-  let biBottomHealth = 30;
-  let biTopHealth = 50;
-  let biBottomDamage = 30;
-  let bitTopDamage = 40;
+  let biBottomHealth = 70;
+  let biTopHealth = 80;
+  let biBottomDamage = 5;
+  let bitTopDamage = 10;
   this.health = Math.floor(Math.random() * (biTopHealth - biBottomHealth + 1)) + biBottomHealth;
   this.damage = Math.floor(Math.random() * (bitTopDamage - biBottomDamage + 1)) + biBottomDamage;
   this.property = "Ground";
@@ -159,10 +162,10 @@ var BiPedal = function() {
 BiPedal.prototype = new Robot();
 
 var ATV = function() {
-  let atvBottomHealth = 30;
-  let atvTopHealth = 50;
-  let atvBottomDamage = 30;
-  let atvTopDamage = 40;
+  let atvBottomHealth = 50;
+  let atvTopHealth = 70;
+  let atvBottomDamage = 15;
+  let atvTopDamage = 20;
   this.health = Math.floor(Math.random() * (atvTopHealth - atvBottomHealth + 1)) + atvBottomHealth;
   this.damage = Math.floor(Math.random() * (atvTopDamage - atvBottomDamage + 1)) + atvBottomDamage;
   this.property = "Ground";
