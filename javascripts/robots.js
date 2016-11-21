@@ -21,7 +21,7 @@ let Robot = function() {
 // For example, one model can have health of 50-80, another one 60-120, etc.
 
 
-var Drone = function() {
+let Drone = function() {
   let droneBottomHealth = 80;
   let droneTopHealth = 90;
   let droneBottomDamage = 10;
@@ -32,7 +32,7 @@ var Drone = function() {
 };
 Drone.prototype = new Robot();
 
-var BiPedal = function() {
+let BiPedal = function() {
   let biBottomHealth = 70;
   let biTopHealth = 80;
   let biBottomDamage = 5;
@@ -43,7 +43,7 @@ var BiPedal = function() {
 };
 BiPedal.prototype = new Robot();
 
-var ATV = function() {
+let ATV = function() {
   let atvBottomHealth = 50;
   let atvTopHealth = 70;
   let atvBottomDamage = 15;
@@ -64,6 +64,7 @@ ATV.prototype = new Robot();
 
 let j5 = new ATV();
 j5.name = "Johnny 5";
+
 // console.log("j5: ", j5);
 
 let doomba = new ATV();
@@ -94,4 +95,3 @@ daryl.name = "D.A.R.Y.L.";
 
 module.exports = { Robot, Drone, BiPedal, ATV, j5, doomba, e5, daryl, bishop, qwerty };
 // module.exports = { Robot };
-
